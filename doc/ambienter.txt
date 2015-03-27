@@ -15,7 +15,7 @@ This plugin allow you to quickly switch betwen two predefined themes
     Switch ambient between 'dark' and 'light' theme.
     This command accept the bang (!) form (see |Ambienter!|)
 
-:Ambienter                                                        *Ambienter!*
+:Ambienter!                                                        *Ambienter!*
     
     Like |Ambienter| but force the 'dark' theme.
 
