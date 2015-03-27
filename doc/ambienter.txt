@@ -1,0 +1,57 @@
+*ambienter.txt*   Adapt your Vim theme based on ambient light
+
+==============================================================================
+Author:  Thomas Lleixa <thomas.lleixa+ambientervim@gmail.com> *ambient-author*
+License: MIT (see |license|)
+
+==============================================================================
+INTRODUCTION                                                       *Ambienter*
+
+This plugin allow you to quickly switch betwen two predefined themes
+(background style and colorscheme), manually or automatically.
+
+:Ambienter                                                         *Ambienter*
+    
+    Switch ambient between 'dark' and 'light' theme.
+    This command accept the bang (!) form (see |Ambienter!|)
+
+:Ambienter                                                        *Ambienter!*
+    
+    Like |Ambienter| but force the 'dark' theme.
+
+:AmbienterSet {ambient}                                         *AmbienterSet*
+
+    Set the theme with the {ambient} predefined values.
+    {ambient} must be user defined.
+
+:AmbienterSensor                                             *AmbienterSensor*
+
+    Define automatically the current theme, based on ambient light detection
+    
+Licence                                                              *licence*
+
+   The MIT License (MIT)
+ 
+   Copyright (c) 25 mars 2015 https://github.com/lleixat (Tom L.)
+ 
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+ 
+   The above copyright notice and this permission notice shall be included in
+   all copies or substantial portions of the Software.
+ 
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+   THE SOFTWARE.
+
+See README.md file for more information.
+
+vim:textwidth=78:tabstop=8:noexpandtab:filetype=help
