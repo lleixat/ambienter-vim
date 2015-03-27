@@ -1,16 +1,13 @@
 ## Introduction
 
-Problem : I love dark colorshemes. Sometimes the ambient light or the backlight
-makes the code difficult to read. 
-Solution : My laptop have many built-in sensors included an Ambient Light
-Sensor (als).
+* Problem : I love dark colorshemes. Sometimes the ambient light or the laptop backlight makes uncomfortable reading and it's best to change the colorscheme.
+* Solution : My laptop have many built-in sensors included an Ambient Light Sensor (als), so I have tryed to make the switch automatic.
 
-This plugin purpose the automatic switch between the "dark" and the "light" one,
-based on the light sensor detection. 
+This plugin purpose the manual switch between a "dark" and "light" theme, or based on the light sensor detection.
 
 ## Compatibility
 
-Tested on GNU/Linux but should work on any \*nix like system.
+Tested on GNU/Linux but should work on any _\*nix_ like system.
 
 This plugin was fully tested and is running properly on :
  - Yoga2 Pro on Achlinux.
@@ -20,17 +17,16 @@ This plugin was fully tested and is running properly on :
 Use your preferred `Pathogen|Bundle|NeoBundle|Vundle` thing.
 
 ```viml
-Vundle 'lleixat/ambient-vim'
+Vundle 'lleixat/ambienter-vim'
 ```
 
-Additionally you can install the colorshemes used in this those examples:
+Additionally you can install the colorshemes used in this doc:
 
 ```viml
 Vundle 'chriskempson/base16-vim'
 ```
 
-Here is an example using `Neobundle` with `chriskempson/base-16` repository as
-dependency (optional):
+Here is an example using `Neobundle` with [chriskempson/base16-vim](https://github.com/chriskempson/base16-vim) repository as dependency (optional):
 ```viml
 NeoBundle 'lleixat/ambienter-vim', {'depends': 'chriskempson/base16-vim'}
 ```
@@ -39,7 +35,7 @@ NeoBundle 'lleixat/ambienter-vim', {'depends': 'chriskempson/base16-vim'}
 
 ### Configuration
 
-You have to set your custom config in your `vimrc`, just like this:
+You have to set your custom config in your `vimrc`, just like that:
 
 ```viml
 let g:ambienter_config = {
@@ -64,8 +60,7 @@ let g:ambienter_config = {
 
 #### Using sensor ...
 
-I use the built-in ambient light sensor (als) on my laptop (Yoga2 Pro). Here are
-my `"sensor"` values:
+I use the built-in ambient light sensor (als) on my laptop (Yoga2 Pro). Here are my `"sensor"` values:
 
 ```viml
 ...
@@ -79,8 +74,7 @@ You must define the path accordingly to your system setup.
 
 ##### ... or not
 
-If you don't have any built-in light sensor, you can detect your screen
-brightness:
+If you don't have any built-in light sensor, you can use your screen brightness:
 
 ```viml
 ...
@@ -93,16 +87,13 @@ brightness:
 
 Basically, you can use any self updated file that contain a digit.
 
-The `"value.min"` option define the minimum value for the switch to occur
-(basically from "dark" to "light").
+The `"value.min"` option define the minimum value for the switch to occur (basically from "dark" to "light").
 
-> This value is obtained after trail and error, and probably needs some 
-adjustments to suit everyone.
+> This value is obtained after trail and error, and probably needs some adjustments to suit everyone.
 
 #### Theme
 
-You have to define your own properties for `"light"` and`"dark"` theme. Usually,
-the `background` value must be `dark` or `light`.
+You have to define your own properties for `"light"` and`"dark"` theme. Usually, the `background` value must be `dark` or `light`.
 
 ```viml
 ...
@@ -120,31 +111,27 @@ the `background` value must be `dark` or `light`.
 ```
 
 
-> I recommend to keep the `background` and `colorsheme` definition as usual,
-somewhere in your vimrc:
+> I recommend to keep the `background` and `colorsheme` definition as usual, somewhere in your vimrc:
 >
 > ```viml
 > " Set default theme
 > set background=dark
 > colorscheme base16-ocean
 > ```
->
-
 
 #### Callback definition
 
-Callbacks are fired after the theme switching and are defined in an array with the `g:ambienter_config.callbacks` key:
+Callbacks are fired after the theme switching and are defined in an array with the `g:ambienter_config.callbacks` var:
 
 ```viml
 let g:ambienter_config.callbacks = [function("SendPlop"), function("MyAwesomeCustomFunction")]
 ```
 
-Callback functions are optional and must be defined _before_ setting the
-"callbacks" key:
+Callback functions are optional and must be defined _before_ setting the "callbacks" key:
 
 ```viml
-" Defining Plop callback function for Ambienter
-function! Plop()
+" Defining the SendPlop callback function for Ambienter
+function! SendPlop()
     echom "Plop !"
 endfunction
 
@@ -152,39 +139,29 @@ endfunction
 let g:ambienter_config.callbacks = [function("SendPlop")]
 ```
 
-You can from here, use one of those predefined commands decribed below.
-
+Fom here, you can use the predefined commands as described below.
 
 ### Commands
 
-#### Toggling
+#### Toggling between 'dark' and 'light' theme
+
+`:Ambienter`: This command call the `Switch` function and allow toggling between your predefined `dark` and `light` theme. You can force the `dark` theme using the *bang* method.
+
 ```
 :Ambienter
-```
-
-This command call the `Switch` function and allow toggling between your
-predefined `dark` and `light` theme.
-You can force the `dark` theme using the *bang* method:
-
-```
 :Ambienter!
 ```
 
-#### Setting
+#### Change the current theme
+
+`:AmbienterSet <ambient>`: Switch to the ambient passed in parameter. The `<ambient>` parameter could be `dark`, `light` or `hellokittyambient` if you have setted the `g:ambienter_config.theme.hellokittyambient` value...
 
 ```
-:AmbienterSet <ambient>
-```
-
-Switch to the ambient passed in parameter. The `<ambient>` parameter could be
-`dark`, `light` or `hellokittyambient` if you have setted the
-`g:ambienter_config.theme.hellokittyambient` key...
-
-```
+:AmbienterSet dark
 :AmbienterSet hellokittyambient
 ```
 
-#### Based on sensor value
+#### Theme switching based on sensor value
 
 Manually:
 
@@ -192,10 +169,10 @@ Manually:
 :AmbienterSensor
 ```
 
-Automagic (ie: on `BufEnter` event):
+Automagically (ie: on `BufEnter` and `WinEnter` event):
 
 ```viml
-au BufEnter * call Ambienter.Sensor() " Adapt colorsheme to ambient light
+au WinEnter,BufEnter * call Ambienter.Sensor() " Adapt colorsheme to ambient light
 ```
 
 Enjoy !
@@ -204,18 +181,19 @@ Enjoy !
 
 ![Ambienter in action](https://raw.github.com/lleixat/ambienter-vim/master/ambienter-vim.gif) (todo)
 
- - Themes :
-  - I recommend this bundle : [https://github.com/chriskempson/base16-vim](https://github.com/chriskempson/base16-vim)
-  - More info on [Base-16 theme](http://http://chriskempson.github.io/base16/)
+ - Themes:
+  - I recommend this bundle: [chriskempson/base16-vim](https://github.com/chriskempson/base16-vim)
+  - More info on [Base-16 theme](http://http://chriskempson.github.io/base16/) site.
 
  - Using the sensors on Yoga2 Pro running a Linux based distro:
-  - Drivers: [https://github.com/pfps/yoga-laptop](https://github.com/pfps/yoga-laptop)
+  - Drivers: [pfps/yoga-laptop](https://github.com/pfps/yoga-laptop)
 
 ## Troubleshooting
 
-### Debug
+#### Debuging
 
-The debug mode is available with:
+A small debug mode is available with:
+
 ```
 let g:ambienter_config.debug = 1
 ```
@@ -223,7 +201,7 @@ let g:ambienter_config.debug = 1
 #### Airline
 
 Airline won't refresh properly on `au BufEnter * ...` event.
-Try to set this callback in  `g:ambienter_config`:
+Try to set this callback in `g:ambienter_config`:
 
 ```vim
 let g:ambienter_config.callbacks = [function("airline#load_theme")]
