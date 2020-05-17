@@ -1,6 +1,6 @@
 ## Introduction
 
-* Problem : I love dark colorshemes. Sometimes the ambient light or the laptop backlight makes uncomfortable reading and it's best to change the colorscheme.
+* Problem : I love dark colorschemes. Sometimes the ambient light or the laptop backlight makes uncomfortable reading and it's best to change the colorscheme.
 * Solution : My laptop have many built-in sensors included an Ambient Light Sensor (als), so I have tryed to make the switch automatic.
 
 This plugin purpose the manual switch between a "dark" and "light" theme, or based on the light sensor detection.
@@ -20,7 +20,7 @@ Use your preferred `Pathogen|Bundle|NeoBundle|Vundle` thing.
 Vundle 'lleixat/ambienter-vim'
 ```
 
-Additionally you can install the colorshemes used in this doc:
+Additionally you can install the colorschemes used in this doc:
 
 ```viml
 Vundle 'chriskempson/base16-vim'
@@ -46,11 +46,11 @@ let g:ambienter_config = {
             \     "theme": {
             \         "light": {
             \             "background": "light",
-            \             "colorsheme": "base16-solarized"
+            \             "colorscheme": "base16-solarized"
             \         },
             \         "dark": {
             \             "background": "dark",
-            \             "colorsheme": "base16-ocean"
+            \             "colorscheme": "base16-ocean"
             \         }
             \     },
             \     "callbacks": [function("airline#load_theme")]
@@ -100,18 +100,18 @@ You have to define your own properties for `"light"` and`"dark"` theme. Usually,
 \ "theme": {
 \     "light": {
 \         "background": "light",
-\         "colorsheme": "base16-solarized"
+\         "colorscheme": "base16-solarized"
 \     },
 \     "dark": {
 \         "background": "dark",
-\         "colorsheme": "base16-ocean"
+\         "colorscheme": "base16-ocean"
 \     }
 \ },
 ...
 ```
 
 
-> I recommend to keep the `background` and `colorsheme` definition as usual, somewhere in your vimrc:
+> I recommend to keep the `background` and `colorscheme` definition as usual, somewhere in your vimrc:
 >
 > ```viml
 > " Set default theme
@@ -172,7 +172,7 @@ Manually:
 Automagically (ie: on `BufEnter` and `WinEnter` event):
 
 ```viml
-au WinEnter,BufEnter * call Ambienter.Sensor() " Adapt colorsheme to ambient light
+au WinEnter,BufEnter * call Ambienter.Sensor() " Adapt colorscheme to ambient light
 ```
 
 Enjoy !
