@@ -1,6 +1,6 @@
 " Ambienter VIM plugin
 
-" Description: Switch colorsheme based on ambient light sensor detection
+" Description: Switch colorscheme based on ambient light sensor detection
 " Author:      <https://github.com/lleixat>
 
 " Version:     1.0
@@ -19,11 +19,11 @@ if empty(g:ambienter_config)
                 \     "theme": {
                 \         "light": {
                 \             "background": "light",
-                \             "colorsheme": ""
+                \             "colorscheme": ""
                 \         },
                 \         "dark": {
                 \             "background": "dark",
-                \             "colorsheme": ""
+                \             "colorscheme": ""
                 \         }
                 \     },
                 \     "callbacks": []
@@ -50,7 +50,7 @@ if !empty(Ambienter.conf.sensor)
             function! Ambienter.Set(ambient) dict
                 if has_key(self.conf.theme, a:ambient)
 
-                    exe 'colorscheme '. self.conf.theme[a:ambient].colorsheme
+                    exe 'colorscheme '. self.conf.theme[a:ambient].colorscheme
                     exe 'set background=' . self.conf.theme[a:ambient].background
 
                     " Fire callbacks if exists
@@ -75,7 +75,7 @@ if !empty(Ambienter.conf.sensor)
                 endif
             endfunction
 
-            " Define colorsheme based on ambient light
+            " Define colorscheme based on ambient light
             function! Ambienter.Sensor() dict
                 " read als current value
                 let self.conf.sensor.value.current = join(readfile(self.conf.sensor.path), "\n")
